@@ -184,16 +184,6 @@ class Dataset(data.Dataset):
 
         if Yaw < 0:
             Yaw += 2 * np.pi
-        # # if Patch >= 0 and Patch < (np.pi / 2):
-        # #     Patch = Patch
-        # # elif Patch >= (np.pi / 2) and Patch < np.pi:
-        # #     Patch = Patch - (np.pi / 2)
-        # # elif Patch >= np.pi and Patch < (3 * np.pi / 2):
-        # #     Patch = Patch - np.pi
-        # # elif Patch >= (3 * np.pi / 2) and Patch < 2 * np.pi:
-        # #     Patch = Patch - (3 * np.pi / 2)
-        # # else:
-        # #     Patch = 0
 
         if Yaw >= 0 and Yaw < (np.pi / 2):
             Yaw = Yaw
@@ -291,16 +281,6 @@ class Dataset(data.Dataset):
 
                 if Yaw < 0:
                     Yaw += 2 * np.pi
-                # # if Patch >= 0 and Patch < (np.pi / 2):
-                # #     Patch = Patch
-                # # elif Patch >= (np.pi / 2) and Patch < np.pi:
-                # #     Patch = Patch - (np.pi / 2)
-                # # elif Patch >= np.pi and Patch < (3 * np.pi / 2):
-                # #     Patch = Patch - np.pi
-                # # elif Patch >= (3 * np.pi / 2) and Patch < 2 * np.pi:
-                # #     Patch = Patch - (3 * np.pi / 2)
-                # # else:
-                # #     Patch = 0
 
                 if Yaw >= 0 and Yaw < (np.pi / 2):
                     Yaw = Yaw
@@ -324,7 +304,8 @@ class Dataset(data.Dataset):
                 # bring the KITTI center up to the middle of the object
                 # Location[1] -= Dimension[0] / 2
 
-                Rotation = np.array([line[14], line[15], line[16]], dtype=np.double)
+                Rotation = np.array(
+                    [line[14], line[15], line[16]], dtype=np.double)
                 Qu = self.eulerAnglesToQu(Rotation)
 
                 buf.append({

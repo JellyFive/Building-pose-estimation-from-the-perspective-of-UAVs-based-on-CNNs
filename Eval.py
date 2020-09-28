@@ -1,8 +1,3 @@
-"""
-This script will use the 2D box from the label rather than from YOLO,
-but will still use the neural nets to get the 3D position and plot onto the
-image. Press space for next image and escape to quit
-"""
 from torch_lib.dataset_posenet import *
 from torch_lib.posenet import Model, OrientationLoss, FocalLoss
 from library.Math import *
@@ -136,7 +131,6 @@ def main():
             [out_loc, orient_patch, conf_patch, orient_yaw,
                 conf_yaw] = model(input_tensor)
 
-            
             out_loc = out_loc.cpu().data.numpy()
             orient_patch = orient_patch.cpu().data.numpy()[0, :, :]
             conf_patch = conf_patch.cpu().data.numpy()[0, :]
@@ -222,7 +216,8 @@ def main():
     print('=' * 50)
     print(
         'Overall loc median total errer {:.3f}'.format(np.median(error_total_loc)))
-    print('Overall loc average total errer {:.3f}'.format(np.mean(error_total_loc)))
+    print('Overall loc average total errer {:.3f}'.format(
+        np.mean(error_total_loc)))
     print('Overall loc average z errer {:.3f}'.format(np.mean(mean_loc)))
     print(
         'loc median x errer {:.3f}'.format(np.median(error_x_arr)))

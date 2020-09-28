@@ -4,6 +4,8 @@ import cv2
 from library.Plotting import *
 
 # using this math: https://en.wikipedia.org/wiki/Rotation_matrix
+
+
 def rotation_matrix(yaw, pitch=0, roll=0):
     tx = roll
     ty = yaw
@@ -136,7 +138,8 @@ def calc_location(dimension, proj_matrix, box_2d, alpha, theta_ray):
                     constraints.append([left, top, right, bottom])
 
     # filter out the ones with repeats
-    constraints = filter(lambda x: len(x) == len(set(tuple(i) for i in x)), constraints)
+    constraints = filter(lambda x: len(x) == len(
+        set(tuple(i) for i in x)), constraints)
 
     # create pre M (the term with I and the R*X)
     pre_M = np.zeros([4, 4])
